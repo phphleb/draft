@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Drafts;
+
+/* *//**<-@Description*/
+
+final class Singleton/**<-@ClassName*/
+{
+    private const VALUE = null/**<-@Value*/;
+
+    private static $instance;
+
+    private function __construct() {}
+
+    private function __clone() {}
+
+    public static function getInstance(): object/**<-@ObjectType*/ {
+        if (!isset(self::$instance)) {
+            try {
+                self::$instance = is_null(self::VALUE) ? new \DraftDummy\StandardObject/**<-@ObjectName*/ () : new \DraftDummy\StandardObject/**<-@ObjectName*/(self::VALUE);
+            } catch (\Throwable $e) {
+               throw $e;
+            }
+        }
+
+        return self::$instance;
+    }
+
+    public function __wakeup() {
+        throw new \Exception("Cannot unserialize singleton");
+    }
+
+}

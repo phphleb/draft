@@ -1,0 +1,13 @@
+<?php
+
+namespace DraftDummy;
+
+interface DynamicObjectInterface
+{
+    public function __construct($value = null);
+
+    public function getClassName(): string;
+
+    public function getDynamicObject(): DynamicObject;
+}
+

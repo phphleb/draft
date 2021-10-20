@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Drafts\Complex;
+
+/* *//**<-@Description*/
+
+final class Adapter/**<-@ClassName*/
+{
+    const METHOD_PREFIX = '<insert_label>/**<-@MethodPrefix*/';
+
+    const ORIGIN_LIST = []/**<-@OriginList*/;
+
+    const TARGET_LIST = []/**<-@TargetList*/;
+
+    private $object;
+
+    public function __construct(\DraftDummy\DynamicObjectInterface/**<-@DynamicObjectInterface*/ $object/**<-@ObjectName*/) {
+        $this->object = $object/**<-@ObjectName*/;
+        return $this;
+    }
+
+    public function __call($method, $args) {
+        if(!method_exists('<insert_label>/**<-@ObjectInterface*/', $method)) {
+            throw new \Exception("The requested method `$method` is missing from the interface <insert_label>/**<-@ObjectInterface*/");
+        }
+
+        // This is where the method is adapted.
+        $targetMethod = trim(self::METHOD_PREFIX) . (self::TARGET_LIST[array_search($method,self::ORIGIN_LIST)] ?? $method);
+
+        if(!method_exists('<insert_label>/**<-@DynamicObjectInterface*/', $targetMethod)) {
+            throw new \Exception("The requested method `$targetMethod` is missing from the interface <insert_label>/**<-@DynamicObjectInterface*/");
+        }
+
+        return call_user_func_array([$this->object, $targetMethod], $args);
+    }
+
+}
+

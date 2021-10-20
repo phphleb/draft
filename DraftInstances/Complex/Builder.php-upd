@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Drafts\Complex;
+
+/* *//**<-@Description*/
+
+final class Builder/**<-@ClassName*/
+{
+    private const VALUE = null/**<-@Value*/;
+
+    private const UNIQUE = false/**<-@IsUnique*/;
+
+    private $requests = [];
+
+    private $object;
+
+    public function __construct() {
+        $this->object = is_null(self::VALUE) ? new \DraftDummy\StandardObject/**<-@ObjectName*/ () : new \DraftDummy\StandardObject/**<-@ObjectName*/(self::VALUE);
+
+        return $this;
+    }
+
+    public function __call($method, $args): Builder/**<-@ClassName*/
+    {
+        if (self::UNIQUE) {
+            if(in_array($method, $this->requests)) {
+                throw new \Exception("This method `$method` has already been called from the class " . get_class($this->object));
+            }
+            $this->requests[] = $method;
+        }
+
+        if (!method_exists($this->object, $method)) {
+            throw new \Exception("The requested method `$method` is missing from the class " . get_class($this->object));
+        }
+        call_user_func_array([$this->object, $method], $args);
+
+        return $this;
+    }
+
+    public function getInstance(): \DraftDummy\StandardObject/**<-@ObjectName*/
+    {
+        return $this->object;
+    }
+}
+

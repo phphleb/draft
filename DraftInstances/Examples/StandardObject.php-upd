@@ -1,0 +1,17 @@
+<?php
+
+namespace DraftDummy;
+
+class StandardObject implements StandardObjectInterface
+{
+    function __construct($value = null) {}
+
+    public function getClassName(): string {
+        return __CLASS__;
+    }
+
+    public function getObject(): StandardObject {
+        return $this;
+    }
+}
+

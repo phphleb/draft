@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Drafts\Complex;
+
+/* *//**<-@Description*/
+
+final class Factory/**<-@ClassName*/
+{
+    private $object;
+
+    public function __construct(\DraftDummy\DynamicObjectInterface/**<-@DynamicObjectInterface*/ $object/**<-@ObjectName*/) {
+        $this->object = new \DraftDummy\StandardObject/**<-@InitObjectName*/($object/**<-@ObjectName*/);
+    }
+
+    public function __call($method, $args) {
+        if(!method_exists('<insert_label>/**<-@ObjectInterface*/', $method)) {
+            throw new \Exception("The requested method `$method` is missing from the interface <insert_label>/**<-@ObjectInterface*/");
+        }
+        if(!method_exists($this->object, $method)) {
+            throw new \Exception("The requested method `$method` is missing from the class " . get_class($this->object));
+        }
+
+        return call_user_func_array([$this->object, $method], $args);
+    }
+}
+

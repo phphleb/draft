@@ -1,0 +1,29 @@
+{
+    "name": "phphleb/draft",
+    "description": "Generator of classes from drafts for the HLEB framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Foma Tuturov",
+            "email": "fomiash@yandex.ru"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Phphleb\\Draft\\": "/"
+        },
+        "exclude-from-classmap": [
+        "**/DraftInstances/"
+        ]
+    },
+    "require": {
+        "php": ">=7.4.0",
+        "ext-readline": "*",
+        "phphleb/updater": "*"
+    },
+    "minimum-stability": "dev"
+}
