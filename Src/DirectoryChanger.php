@@ -29,7 +29,7 @@ class DirectoryChanger
  */
  ?>';
 
-    // �opies files and non-empty directories
+    // Copies files and non-empty directories
     public static function recursiveCopy($src, $dst) {
         if (file_exists($dst)) self::recursiveRemoveDirectory($dst);
         if (is_dir($src)) {
