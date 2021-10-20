@@ -51,7 +51,7 @@ class Converter
                 $this->errors[] = 'Incorrectly filled draft state';
             }
             foreach($config as $k => $conf) {
-                $file = $this->patternsDir . DIRECTORY_SEPARATOR . $k . '.php';
+                $file = $this->patternsDir . DIRECTORY_SEPARATOR . str_replace('\\', '/', $k) . '.php';
                 if (!file_exists($file)) {
                     $this->errors[] = 'Draft file not found: ' . $file;
                 }
@@ -77,7 +77,7 @@ class Converter
                 if(!is_dir($directory)) {
                     mkdir($directory, 0755, true);
                 }
-                $resultFile = $directory . DIRECTORY_SEPARATOR . $file . '.php';
+                $resultFile = $directory . DIRECTORY_SEPARATOR . str_replace('\\', '/', $file) . '.php';
                 file_put_contents($resultFile, $content);
             }
         }
