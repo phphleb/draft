@@ -1,8 +1,9 @@
 <?php
-
+/**
+ * @author  Foma Tuturov <fomiash@yandex.ru>
+ */
 
 namespace Phphleb\Draft\Src;
-
 
 class Converter
 {
