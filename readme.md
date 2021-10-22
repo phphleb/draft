@@ -45,7 +45,7 @@ return [
     ],
 'BClass' => [
         'TestDraftClass' => [
-            'ActiontName' => 'implode',
+            'ActionName' => 'implode',
             'Value' => '[100,500]',
             'ReturnType' => 'string',
             'Description' => 'Demo B class'
@@ -62,7 +62,7 @@ class TestDraftClass/**<-@ClassName*/
   private const VALUE = null/**<-@Value*/;
   public function get(): void/**<-@ReturnType*/
   {
-     return /**<-@ActiontName*/(self::VALUE);
+     return /**<-@ActionName*/(self::VALUE);
   }
 }
 ````
