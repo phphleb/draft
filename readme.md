@@ -1,6 +1,6 @@
-#Draft Instances
+# Draft Instances
 
-####Class generator using templates ("drafts")
+### Class generator using templates ("drafts")
 
 This way is different from the traditional **DI (Dependency injection)**,
 since it does not injects dependencies programmatically at runtime, but in advance,
@@ -12,15 +12,15 @@ their correctness can be checked, dependencies are "visible" for IDE, so as test
 Draft Instances is an experimental technique, as well as some others in [HLEB](https://github.com/phphleb/hleb) framework encompassing this library.
 *Unsuitable for using recklessly.* If desired, the library may be connected separately (generation is implemented in **GeneratingTask** class).
 
-#####Installation
+#### Installation
 ```bash
 $ composer require phphleb/draft
 ```
-#####Deployment
+#### Deployment
 ```bash
 $ php console phphleb/draft --add
 ```
-#####Generation
+#### Generation
 Generating classes and updating the autoloader. Every time when the settings or template classes are changed, this command is to be started.
 ```bash
 $ php console drafts/generating-task --update-all
@@ -98,7 +98,7 @@ Only this rule is to be taken into account, on creating your own classes-"drafts
 
 By default, some examples illustrating generation capabilities were created in this library (**services.php** file and **DraftInstances** folder with "drafts").
 
-#####Updating the library
+#### Updating the library
 
 ```bash
 $ composer update phphleb/draft
@@ -110,4 +110,4 @@ $ composer dump-autoload
 -----------------------------------
 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT%20(Free)-brightgreen.svg)](https://github.com/phphleb/draft/blob/main/LICENSE) ![PHP](https://img.shields.io/badge/PHP-^7.3.0-blue) ![PHP](https://img.shields.io/badge/PHP-8-blue) ![PHP](https://img.shields.io/badge/HLEB->=1.5.72-brightgreen)
+[![License: MIT](https://img.shields.io/badge/License-MIT%20(Free)-brightgreen.svg)](https://github.com/phphleb/draft/blob/main/LICENSE) ![PHP](https://img.shields.io/badge/PHP-^7.3.0-blue) ![PHP](https://img.shields.io/badge/PHP-8-blue)
