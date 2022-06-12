@@ -98,6 +98,16 @@ Only this rule is to be taken into account, on creating your own classes-"drafts
 
 By default, some examples illustrating generation capabilities were created in this library (**services.php** file and **DraftInstances** folder with "drafts").
 
+#### Switch to testing
+Allows you to reassign classes from another folder (with stubs) for the entire project.
+```bash
+$ php console drafts/generating-task --update-all /app/Optional/tests/services.php
+$ composer dump-autoload
+```
+After that, you can run tests.
+
+Attention! Only for the development server. Then you need to switch back to default.
+
 #### Updating the library
 
 ```bash

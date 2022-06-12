@@ -26,33 +26,37 @@ use Phphleb\Draft\Src\DirectoryChanger;
 
 class GeneratingTask extends \Hleb\Scheme\App\Commands\MainTask
 {
-    // php console drafts/generating-task [arg]
+    // php console drafts/generating-task [arg] [config]
 
     const DESCRIPTION = "Creating classes from drafts";
 
-    const COMMAND_PATTERN = 'php console drafts/generating-task [<name> | --update-all]';
+    const COMMAND_PATTERN = 'php console drafts/generating-task [<name> | --update-all] [<config>]';
 
-    protected function execute($arg = null): void
+    protected function execute($arg = null, $config = '/app/Optional/services.php'): void
      {
          if (empty($arg)) {
-             exit("\n" . 'Command pattern: ' . self::COMMAND_PATTERN . "\n");
+             exit(PHP_EOL . 'Command pattern: ' . self::COMMAND_PATTERN . PHP_EOL);
          }
-         $config = require DirectoryChanger::globalDir() . '/app/Optional/services.php';
+         $configPath = DirectoryChanger::globalDir() . DIRECTORY_SEPARATOR . ltrim($config, '\\/ ');
+         if (!file_exists($configPath)) {
+             exit(PHP_EOL . 'The specified config file was not found!'. PHP_EOL);
+         }
+         $config = require $configPath;
          if (isset($config[$arg])) {
              $config = [$arg => $config[$arg]];
          } else if ($arg != '--update-all') {
-             exit("\n" . 'Command pattern: ' . self::COMMAND_PATTERN . "\n");
+             exit(PHP_EOL . 'Command pattern: ' . self::COMMAND_PATTERN . PHP_EOL);
          }
          $instancesDir = DirectoryChanger::globalDir() . '/app/Drafts';
          $patternsDir = DirectoryChanger::globalDir() . '/app/Optional/DraftInstances';
          $converter = new Converter($config, $instancesDir, $patternsDir);
          if ($converter->run()) {
-             echo "\n" . 'Class' . (count($config) === 1 ? '' : 'es' ) . ' have been successfully generated!' . "\n";
+             echo PHP_EOL . 'Class' . (count($config) === 1 ? '' : 'es' ) . ' have been successfully generated!' . PHP_EOL;
          }
          if (count($converter->getErrors())) {
              print_r($converter->getErrors());
          }
-         echo "\n" . __CLASS__ . " done." . "\n";
+         echo PHP_EOL . __CLASS__ . " done." . PHP_EOL;
      }
 
 }
