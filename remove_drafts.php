@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/../updater/FileRemover.php";
+include_once __DIR__ . "/../updater/FileRemover.php";
 
 $uploader = new \Phphleb\Updater\FileRemover(__DIR__ . DIRECTORY_SEPARATOR);
 

@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . "/Src/DirectoryChanger.php";
-require __DIR__ . "/../updater/FileUploader.php";
+include_once  __DIR__ . "/Src/DirectoryChanger.php";
+include_once __DIR__ . "/../updater/FileUploader.php";
 
 use Phphleb\Draft\Src\DirectoryChanger;
 

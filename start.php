@@ -18,23 +18,8 @@
     } else if (end($argv) === '--add') {
         $action = true;
     } else {
-        $action = (bool)selectAction();
-    }
-    if ($action) {
-        include __DIR__ . "/add_drafts.php";
-    } else {
-        include __DIR__ . "/remove_drafts.php";
+        exit(PHP_EOL . 'For details, repeat the command with the `--help` flag.' . PHP_EOL);
     }
 
-    function selectAction() {
-        $actionType = readline('What action should be performed? Enter symbol to add(A) or remove(R) files>');
-        if ($actionType === "A") {
-            return true;
-        }
-        if ($actionType === "R") {
-            return false;
-        }
-       return selectAction();
-    }
-
+    include __DIR__ . ($action ? "/add_drafts.php" : "/remove_drafts.php");
 
