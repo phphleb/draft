@@ -1,1 +1,0 @@
-Class generator using templates ("drafts")  https://github.com/phphleb/draft
